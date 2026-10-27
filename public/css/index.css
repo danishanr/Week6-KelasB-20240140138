@@ -1,0 +1,168 @@
+/* Style utama: dipakai oleh index.html dan form.html */
+:root {
+  --bg: #f5f7fb;
+  --card: #ffffff;
+  --text: #1b2333;
+  --muted: #5f6b85;
+  --accent: #3b5bdb;
+  --accent-dark: #2c46b0;
+  --danger: #c92a2a;
+  --success: #2b8a3e;
+  --border: #dde3f0;
+  --radius: 12px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.5;
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  padding: 14px 24px;
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+}
+
+nav a {
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 600;
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+}
+
+nav a:hover,
+nav a[aria-current="page"] {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+header {
+  text-align: center;
+  padding: 40px 24px 16px;
+}
+
+header h1 { margin: 0; font-size: clamp(28px, 5vw, 42px); }
+header p { margin: 8px 0 0; color: var(--muted); }
+
+main {
+  max-width: 1080px;
+  margin: 24px auto 64px;
+  padding: 0 24px;
+}
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+  padding: 24px;
+  border-top: 1px solid var(--border);
+}
+
+/* Kontrol pencarian */
+.controls {
+  max-width: 1080px;
+  margin: 16px auto 0;
+  padding: 0 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.controls input,
+.controls select {
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--card);
+  font-size: 14px;
+  color: var(--text);
+}
+
+.controls input { flex: 1; min-width: 200px; }
+.controls input:focus,
+.controls select:focus { outline: 2px solid var(--accent); border-color: transparent; }
+
+/* Status loading / error */
+#status {
+  text-align: center;
+  color: var(--muted);
+  padding: 48px 0;
+}
+
+#status.loading::before {
+  content: "";
+  display: block;
+  width: 32px;
+  height: 32px;
+  margin: 0 auto 12px;
+  border: 3px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+#status.error { color: var(--danger); }
+
+#status button {
+  display: block;
+  margin: 12px auto 0;
+  padding: 8px 18px;
+  border: none;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#status button:hover { background: var(--accent-dark); }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Grid produk */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(27, 35, 51, 0.1);
+}
+
+.card img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  background: #eef1f8;
+  display: block;
+}
+
+.card .body { padding: 14px 16px 16px; display: flex; flex-direction: column; flex: 1; }
+.card .category { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); }
+.card h3 { margin: 4px 0 8px; font-size: 16px; }
+.card .meta { font-size: 13px; color: var(--muted); margin-bottom: 10px; }
+.card .price { margin-top: auto; font-size: 18px; font-weight: 700; }

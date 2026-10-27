@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Katalog Produk</title>
+  <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" aria-current="page">Katalog</a>
+    <a href="form.html">Kalkulator</a>
+  </nav>
+
+  <header>
+    <h1>Katalog Produk</h1>
+    <p>Data diambil langsung dari dummyjson.com/products menggunakan Fetch API</p>
+  </header>
+
+  <div class="controls">
+    <input type="text" id="searchInput" placeholder="Cari produk...">
+    <select id="categorySelect">
+      <option value="">Semua Kategori</option>
+    </select>
+    <select id="sortSelect">
+      <option value="default">Urutan Default</option>
+      <option value="price-asc">Harga Termurah</option>
+      <option value="price-desc">Harga Termahal</option>
+      <option value="name-asc">Nama A-Z</option>
+    </select>
+  </div>
+
+  <main>
+    <div id="status" role="status" aria-live="polite"></div>
+    <div class="grid" id="productGrid"></div>
+  </main>
+
+  <footer>Sumber data: dummyjson.com &middot; HTML, CSS, dan JavaScript native</footer>
+
+  <script src="js/index.js"></script>
+</body>
+</html>
